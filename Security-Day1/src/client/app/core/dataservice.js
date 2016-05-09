@@ -22,6 +22,7 @@
         .then(function(response) {
           console.log(response.data.token);
           principal.setToken(response.data.token);
+          principal.setRoles(response.data.roles);
           $state.go('dashboard');
         })
         .catch(function(error) {

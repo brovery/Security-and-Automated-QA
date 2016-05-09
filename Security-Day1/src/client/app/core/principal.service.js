@@ -10,7 +10,9 @@
   function PrincipalService() {
     var service = {
       setToken: setToken,
-      getToken: getToken
+      getToken: getToken,
+      setRoles: setRoles,
+      getRoles: getRoles
     };
 
     return service;
@@ -23,6 +25,16 @@
 
     function getToken() {
       return this.token;
+    }
+
+    this.roles = [];
+
+    function setRoles(roles) {
+      this.roles = roles;
+    }
+
+    function getRoles() {
+      return this.roles;
     }
   }
 })();

@@ -12,7 +12,28 @@
     /* jshint validthis:true */
     var config = {
       docTitle: undefined,
-      resolveAlways: {}
+      resolveAlways: {
+        isAuthorized: function(principal, $state, $q) {
+          if($state.toState.settings.roles) {
+            var isAuthorized = false;
+            $state.toState.settings.roles.find(function(role) {
+              return principal.getRoles().find(function(userRole) {
+                if(role === userRole) {
+                  isAuthorized = true;
+                  return isAuthorized;
+                }
+              })
+            })
+            if (isAuthorized) {
+              return $q.when();
+            } else {
+              return $q.reject({data: 'Unauthorized', statusText: 'You are not authorized to see this page.'});
+            }
+          } else {
+            return $q.when();
+          }
+        }
+      }
     };
 
     if (!(window.history && window.history.pushState)) {

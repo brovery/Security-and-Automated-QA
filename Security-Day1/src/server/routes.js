@@ -59,7 +59,7 @@ function authenticate(req, res) {
   var password = req.body.password;
   console.log('processing authentication request ' + email + password);
   var user = data.users.find(function(user) {
-    console.log('is this it?');
+    console.log('is this it?')
     return user.email === email && user.password === password;
   });
   if (user) {
