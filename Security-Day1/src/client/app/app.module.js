@@ -9,7 +9,7 @@
       'app.layout',
       'app.login'
     ])
-    .config(function($httpProvider) {
+    .config(function($httpProvider, $provide) {
       $httpProvider.interceptors.push(function(principal) {
         return {
           'request': function(config) {
@@ -22,6 +22,14 @@
             return response;
           }
         };
+      });
+
+      $provide.decorator('$state', function($delegate, $rootScope) {
+        $rootScope.$on('$stateChangeStart', function(event, state, params) {
+          $delegate.toState = state;
+          $delegate.toParams = params;
+        });
+        return $delegate;
       });
     });
 

@@ -59,14 +59,15 @@ function authenticate(req, res) {
   var password = req.body.password;
   console.log('processing authentication request ' + email + password);
   var user = data.users.find(function(user) {
-    console.log('is this it?')
+    console.log('is this it?');
     return user.email === email && user.password === password;
   });
   if (user) {
     res.json({
       type: true,
       data: user.email,
-      token: jwt.sign(user.email, secretKey/*, {expiresIn: '1h'}*/)
+      token: jwt.sign(user.email, secretKey/*, {expiresIn: '1h'}*/),
+      roles: user.roles
     });
   } else {
     res.sendStatus(403);
