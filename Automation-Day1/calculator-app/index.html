@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator app</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+</head>
+<body ng-app="calcApp">
+
+<div class="alert alert-success" ng-controller="calcController as cc">
+    <h3>Calculator</h3>
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="numX" >Number 1</label>
+            <input type="number" class="form-control" id="numX" ng-model="cc.x">
+        </div>
+        <div class="form-group">
+            <label for="numY" >Number 1</label>
+            <input type="number" class="form-control" id="numY" ng-model="cc.y">
+        </div>
+
+        <button class="btn btn-primary" ng-click="cc.sum()">Add</button>
+    </form>
+
+    <div>
+        {{cc.z}}
+    </div>
+
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
